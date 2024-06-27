@@ -1,0 +1,15 @@
+services:
+  app:
+    image: maven-crud-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: maven_Docker
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
