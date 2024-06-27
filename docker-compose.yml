@@ -1,0 +1,6 @@
+services:
+  test-maven-image:
+    image: test-maven-image
+    container_name: test-maven-container
+    ports:
+      - "8080:8080"
