@@ -1,10 +1,10 @@
-package com.crud.maven;
+package com.example;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MavenApplicationTests {
+class SpringDockerApplicationTests {
 
 	@Test
 	void contextLoads() {

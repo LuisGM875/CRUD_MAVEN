@@ -1,4 +1,4 @@
-package com.crud.maven;
+package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
