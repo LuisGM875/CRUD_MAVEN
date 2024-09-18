@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 19
+    commands:
+      - echo Instalando dependencias...
+      - apt-get update -y
+      - apt-get install -y docker-compose
+  pre_build:
+    commands:
+      - echo Iniciando sesión en Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - REPOSITORY_URI=tu-repositorio-ecr
+  build:
+    commands:
+      - echo Construyendo la imagen Docker...
+      - docker-compose build
+      - echo Etiquetando la imagen...
+      - docker tag maven-crud-app:latest $REPOSITORY_URI:latest
+  post_build:
+    commands:
+      - echo Empujando la imagen al repositorio ECR...
+      - docker push $REPOSITORY_URI:latest
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
